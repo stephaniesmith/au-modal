@@ -11,7 +11,7 @@ import {AuModalModule} from './au-modal/au-modal.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {AuInputModule} from 'au-input';
-import {AuTabPanelModule} from "au-tab-panel";
-import {AuModalModule} from "./au-modal/au-modal.module";
+import {AuTabPanelModule} from 'au-tab-panel';
+import {AuModalModule} from './au-modal/au-modal.module';
 
 
 @NgModule({

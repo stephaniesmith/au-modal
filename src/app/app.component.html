@@ -74,6 +74,8 @@
     *auModalOpenOnClick="[loginButton, signUpButton]">
     <i class="fa fa-times" (click)="modal.closeModal()"></i>
   </au-modal>
+
+  <au-modal id="testModal" *auModalOpenOnClick="testButton"></au-modal>
   
 
   <div class="modal-buttons">
@@ -81,6 +83,8 @@
     <button #loginButton (click)="setLoginActive(true)">Login</button>
 
     <button #signUpButton (click)="setLoginActive(false)">Sign Up</button>
+
+    <button id="testButton" #testButton>Test Button</button>
 
   </div>
 

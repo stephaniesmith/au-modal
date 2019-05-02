@@ -1,10 +1,11 @@
-import { Directive, TemplateRef, ViewContainerRef, Input, OnInit } from '@angular/core';
+import { Directive, TemplateRef, ViewContainerRef, Input, OnInit, OnDestroy } from '@angular/core';
 import { ModalService } from './modal.service';
 
 @Directive({
   selector: '[auModalOpenOnClick]'
 })
-export class AuModalOpenOnClickDirective implements OnInit {
+export class AuModalOpenOnClickDirective implements OnInit, OnDestroy {
+  elements: HTMLBaseElement[];
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -17,21 +18,19 @@ export class AuModalOpenOnClickDirective implements OnInit {
       .subscribe(() => this.viewContainer.clear())
   }
 
+  ngOnDestroy() {
+    this.elements.forEach(el => el.removeEventListener('click', this.clickHandler));
+  }
+
   @Input() set auModalOpenOnClick(els) {
-    let elements: HTMLBaseElement[];
+    this.elements = els.length ? els : [els];
 
-    if (els.length) {
-      elements = els;
-    } else {
-      elements = [els];
-    }
+    this.elements.forEach(el => el.addEventListener('click',  this.clickHandler));
+  }
 
-    elements.forEach(el => {
-      el.addEventListener('click', () => {
-        this.viewContainer.clear();
-        this.viewContainer.createEmbeddedView(this.templateRef);
-      });
-    });
+  clickHandler = () => {
+    this.viewContainer.clear();
+    this.viewContainer.createEmbeddedView(this.templateRef);
   }
 
 }

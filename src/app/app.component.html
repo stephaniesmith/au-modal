@@ -64,11 +64,13 @@
   </ng-template>
   
   <au-modal
+    #modal
     class="auth-modal"
     [body]="authModalBody"
     [hideOnEsc]="true"
     [hideOnClickOutside]="true"
     *auModalOpenOnClick="[loginButton, signUpButton]">
+    <i class="fa fa-times" (click)="modal.closeModal()"></i>
   </au-modal>
   
 

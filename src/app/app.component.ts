@@ -6,7 +6,9 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  loginActive = true;
 
-
-
-}
+  setLoginActive(loginActive) {
+    this.loginActive = loginActive;
+  }
+} 

@@ -11,6 +11,7 @@ export class AuModalComponent implements OnInit {
   @Input() body: TemplateRef<any>;
   @Input() hideOnEsc = true;
   @Input() hideOnClickOutside = true;
+  @Input() context: any;
 
   constructor(
     private modalService: ModalService,
